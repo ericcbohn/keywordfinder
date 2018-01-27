@@ -1,0 +1,33 @@
+<h1>Keyword Finder</h1>
+<div *ngIf="!name; else forminfo">
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm._value)" novalidate>
+        <!--<div class="form-group">
+            <label for="name">Name:
+                <input id="name" class="form-control" type="text" [formControl]="name" />
+            </label>
+        </div>
+        <div class="alert alert-danger" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">{{ titleAlert }}</div>-->
+        <div class="form-group">
+            <label for="jobPost">Description:</label>
+            <textarea class="form-control" rows="5" id="jobPost" formControlName="jobPost"></textarea>
+        </div>
+        <div class="alert alert-danger" *ngIf="!rForm.controls['jobPost'].valid && rForm.controls['jobPost'].touched">You must specify a job post that's between 10 and 500 characters.</div>
+        <!--<div class="checkbox">  
+            <label><input type="checkbox" value="" name="validate" formControlName="validate">Minimum of 3 Characters</label>
+        </div>-->  
+        <div class="form-group">
+            <input class="form-control" class="btn btn-primary" type="submit" [disabled]="!rForm.valid" value="Submit Form" />  
+        </div>
+    </form>
+</div>
+<keyword></keyword>
+
+<ng-template #forminfo>
+    <div>
+        <div>
+            <!--<h1>{{  }}</h1>-->
+            <p>{{ jobPost }}</p>
+        </div>
+    </div>
+</ng-template>
+
